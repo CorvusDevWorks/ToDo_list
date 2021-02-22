@@ -1,0 +1,146 @@
+
+
+* {
+
+margin:0;
+padding:0;
+box-sizing:border-box;
+
+
+}
+
+
+.container{
+
+background-image: url('./img/to-do.jpg');
+
+background-size:cover!important;
+background-repeat:no-repeat;
+background-position:center;
+height:100vh;
+position:relative;
+
+
+
+}
+
+.task-box {
+	width: 650px;
+	display:flex;
+
+	justify-content:center;
+	align-items:stretch;
+	flex-wrap:wrap;
+	
+	margin:auto;
+	position:relative;
+	top:250px;
+	
+}
+
+
+
+	
+	
+
+
+
+ul {
+    
+    width: 60%;
+    margin: auto;
+}
+
+
+li {
+    
+    display:flex;
+    justify-content:space-between;
+    flex-direction: row;
+    margin: 10px 0;
+}
+
+button {
+    
+    display:inline-block;
+    margin: 0 10px;
+    padding: 10px 30px
+    
+}
+
+li {
+    
+    font-size:3rem;
+    text-align:center!important;
+    
+}
+
+.style-div {
+    
+    display:flex;
+    
+    justify-content:space-around;
+    border: 1px solid grey;
+    margin: 10px;
+}
+
+.style-div li {
+    display:flex;
+    justify-content:center;
+    flex:1;
+    margin: 5px 5px;
+    text-align:center!important;
+    background:#eee;
+}
+
+.style-btn {
+    
+    cursor:pointer;
+    border-radius: 50%;
+    background:red;
+    color:white;
+    z-index:5;
+}
+
+.style-btn i {
+    
+    font-size:2rem;
+   
+    
+}
+
+.cekiranje input[type=checkbox] {
+    
+    height:3rem;
+    width:3rem;
+    border: 1px solid greenyellow;
+    
+   
+    
+}
+
+li .cekiranje input[type=checkbox] {
+    
+    height:3rem;
+    width:3rem;
+    background:green;
+    
+   
+    
+}
+
+
+ .strelca {
+    
+    text-decoration: line-through;
+    opacity:0.5;
+}
+
+
+.fa-trash,
+input[type=checkbox] {
+    
+    pointer-events:none;
+}
+
+

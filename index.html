@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>To Do List</title>
+    <link href="style.css" rel="stylesheet">
+    
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+</head>
+<body>
+   <div class="container">
+  <div class="task-box">
+   
+   <div>
+    Unesi zadatak: <input type="text" id="ime">
+
+<a href="#"><button id="dodaj-ime-dugme"> Dodaj </button></a>
+</div>
+<ul id="imena">
+
+
+</ul>
+
+
+</div>
+
+</div>
+<script>
+    
+    
+      let  niz =JSON.parse(localStorage.getItem('lista'));
+    console.log(niz);
+    
+    function dodajIme() {
+let ime = document.getElementById('ime').value;
+let okvir = document.createElement('div');
+okvir.classList.add('style-div');
+let tekst= document.createElement('li');
+let brisko=document.createElement('button');
+let ceker= document.createElement('span');
+ceker.classList.add('cekiranje');
+brisko.classList.add('trash','style-btn');
+
+
+tekst.innerHTML= ime;
+brisko.innerHTML= '<i class="fas fa-trash"> </i>'; 
+ceker.innerHTML="<input type='checkbox'>"
+        
+let kutija= document.getElementById('imena');
+kutija.appendChild(okvir);     
+okvir.appendChild(tekst);
+okvir.appendChild(brisko);
+okvir.appendChild(ceker);
+
+        
+ 
+        
+let imeplus=ime
+    
+
+     
+niz.push(ime);
+ 
+localStorage.setItem( 'lista',JSON.stringify(niz));
+
+        
+console.log(niz);
+        
+
+        
+ document.getElementById('ime').value='';
+
+      
+        
+        
+
+
+
+
+}
+    
+function brisanjeProvera(e) {
+    
+    let item= e.target;
+    
+    let meta= item.parentElement;
+    
+    let lista=meta.firstChild;
+    
+    
+    
+    if(item.classList[0]=='trash') {
+        
+     
+        
+     let broj=  niz.indexOf(meta.firstChild.innerText);
+        
+        console.log(broj);
+        
+        
+        niz.splice(broj,1);
+        
+        console.log(niz);
+        meta.remove();
+        
+         localStorage.setItem( 'lista',JSON.stringify(niz));
+        
+    }
+    
+    if(item.classList[0]==='cekiranje') {
+        let meta= item.parentElement;
+        
+        meta.classList.toggle('strelca');
+        
+    }
+    
+    
+
+    
+   
+}
+
+
+function init() {
+
+let btn = document.querySelector("#dodaj-ime-dugme");
+let kutija= document.getElementById('imena');
+
+let niz=[];
+
+
+btn.addEventListener('click', dodajIme);
+kutija.addEventListener('click',brisanjeProvera);
+
+ 
+     if(localStorage.getItem('lista')=== null) {
+      
+        niz=[];
+    }
+    else { 
+   niz =JSON.parse(localStorage.getItem('lista'));
+    }
+    
+   
+    
+    
+    
+    for(let i=0; i<niz.length; i++) { 
+
+let okvir = document.createElement('div');
+okvir.classList.add('style-div');
+let tekst= document.createElement('li');
+let brisko=document.createElement('button');
+let ceker= document.createElement('span');
+ceker.classList.add('cekiranje');
+brisko.classList.add('trash','style-btn');
+
+
+tekst.innerHTML= niz[i];
+brisko.innerHTML= '<i class="fas fa-trash"> </i>'; 
+ceker.innerHTML="<input type='checkbox'>"
+        
+let kutija= document.getElementById('imena');
+kutija.appendChild(okvir);     
+okvir.appendChild(tekst);
+okvir.appendChild(brisko);
+okvir.appendChild(ceker);
+    
+
+        
+    }
+
+    
+}
+
+window.addEventListener('load',init);
+    
+    
+    </script>
+
+
+
+
+</body>
+</html>
